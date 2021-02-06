@@ -35,26 +35,53 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  var newTaskCtrl = TextEditingController();
+
+  void add() {
+    if (newTaskCtrl.text.isEmpty) return;
+    setState(() {
+      widget.items.add(Item(title: newTaskCtrl.text, done: false));
+      newTaskCtrl.text = ""; //ou newTaskCtrl.clear();
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
+    newTaskCtrl.clear();
     return Scaffold(
-        appBar: AppBar(
-            //leading: Text("Oi"),
-            title: Text("Todo List")),
-        //actions: <Widget>[Icon(Icons.plus_one)]),
-        body: ListView.builder(
-            itemCount: widget.items.length,
-            itemBuilder: (BuildContext context, int index) {
-              final item = widget.items[index];
-              return CheckboxListTile(
-                  title: Text(item.title),
-                  key: Key(item.title),
-                  value: item.done,
-                  onChanged: (value) {
-                    setState(() {
-                      item.done = value;
-                    });
+      appBar: AppBar(
+          //leading: Text("Oi"),
+          title: TextFormField(
+        controller: newTaskCtrl,
+        keyboardType: TextInputType.text,
+        style: TextStyle(
+          color: Colors.white,
+          fontSize: 18,
+        ),
+        decoration: InputDecoration(
+            labelText: "Nova tarefa",
+            labelStyle: TextStyle(color: Colors.white)),
+      )),
+      //actions: <Widget>[Icon(Icons.plus_one)]),
+      body: ListView.builder(
+          itemCount: widget.items.length,
+          itemBuilder: (BuildContext context, int index) {
+            final item = widget.items[index];
+            return CheckboxListTile(
+                title: Text(item.title),
+                key: Key(item.title),
+                value: item.done,
+                onChanged: (value) {
+                  setState(() {
+                    item.done = value;
                   });
-            }));
+                });
+          }),
+      floatingActionButton: FloatingActionButton(
+        onPressed: add,
+        child: Icon(Icons.add),
+        backgroundColor: Colors.pink,
+      ),
+    );
   }
 }

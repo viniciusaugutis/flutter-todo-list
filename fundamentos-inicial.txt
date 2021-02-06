@@ -1,0 +1,104 @@
+INSTALAÇÃO 
+
+c://src/flutter 
+
+Abrir arquivo flutter console
+
+flutter doctor
+
+E ir resolvendo as pendências, como variáveis de ambiente e path da sdk
+
+ANDROID_HOME C:\Android\Sdk
+
+flutter doctor --android-licenses
+_____________________________________________________________________________________________
+
+ESTRUTURA DE PASTAS
+
+.idea - recursos da ide
+android e ios - código nativo para os dois
+lib - onde fica o código dart, e tem o main.dart primeiro arquivo chamado quando app executar
+test - testes da aplicação
+.metadata e .gitignore 
+pubspec.yaml - igual o webconfig da nossa aplicação (.envs do node da vida).
+
+flutter devices - visualizar os devices habilitados
+
+flutter run -d nomeDevice
+
+ou flutter run quando tem um só conectado
+
+R no terminal ele da um hotreload
+
+Shift + R - da uma restart e perder tambem o estado da aplicação.
+_____________________________________________________________________________________________
+
+STATELESS X STATEFUL
+
+Flutter trabalha apenas com widgets para layouts. Mas ainda teremos nossas classes. Tudo é Widget.
+
+Stateless: sem estado e não persiste ele. 
+
+Stateful: possui estado e interação com aquele widget.
+
+Tudo é widget.
+
+stl é um sniped já 
+stf é outro sniper
+
+Flutter não é proativo, ele já é reativo.
+Quando muda uma propriedade precisamos avisar para ele. Não é igual o angular que fica monitorando as mudanças das variáveis e já faz alguma ação.
+
+Atualizar a tela: só acontece nos StatefulWidget, não é possivel fazer no stateless widget.
+_____________________________________________________________________________________________
+
+Material app
+
+Material é a interface que temos para o android, do material design.
+Já o cupertino é a interface que temos para o IOS.
+
+Widget.dart ele é o generico.
+
+É possível utilizar botão de uma aplicação ou outra dentro do aplicativo.
+
+Sempre iremos retornar um MaterialApp no início, que é a casca da aplicação
+
+O flutter olha o arquivo main.dart e o metodo void main(), que chama um runApp com um Widget inicial
+_____________________________________________________________________________________________
+
+Scaffold
+
+Separar a aplicação em vários Widgets, isso é essencial.
+
+Dividir widges em dois tipos:
+Widgets pages 
+Widges proprio 
+
+Maioria dos widgets tem uma propriedade chamada child
+
+Scaffold é melhor do que o child, para fazer a aplicação se comportar como uma página.
+
+Scaffold tem o body, ai que tem um container e dentro do container tem o child.
+
+Toda vez que tem uma página coloca Scaffold, que é a estrutura de página.
+
+appBar e body são as essenciais do scaffold.
+
+JSON to dart - bem util para desenvolvimento
+
+https://javiercbk.github.io/json_to_dart/
+
+Para estado da aplicação: 
+
+é utilizado o setState
+
+Com o setState o flutter é inteligente o suficiente para saber qual ele tem que renderizar na tela.
+
+TextEditingController: voce consegue controlar tudo de um text form (input) no flutter.
+
+SharedPreferences é um pacote para salvar coisas locais da aplicação
+
+flutter pub get ele executa sozinho
+
+
+
